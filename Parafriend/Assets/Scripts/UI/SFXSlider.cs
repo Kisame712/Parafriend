@@ -5,9 +5,9 @@ public class SFXSlider : MonoBehaviour
     [SerializeField] private Slider sfxSlider;
     private void Start()
     {
-        if (!PlayerPrefs.HasKey("musicVolume"))
+        if (!PlayerPrefs.HasKey("sfxVolume"))
         {
-            PlayerPrefs.SetFloat("musicVolume", 0.5f);
+            PlayerPrefs.SetFloat("sfxVolume", 0.5f);
             Load();
         }
         else
@@ -23,11 +23,11 @@ public class SFXSlider : MonoBehaviour
 
     private void Save()
     {
-        PlayerPrefs.SetFloat("musicVolume", sfxSlider.value);
+        PlayerPrefs.SetFloat("sfxVolume", sfxSlider.value);
     }
 
     private void Load()
     {
-        sfxSlider.value = PlayerPrefs.GetFloat("musicVolume");
+        sfxSlider.value = PlayerPrefs.GetFloat("sfxVolume");
     }
 }

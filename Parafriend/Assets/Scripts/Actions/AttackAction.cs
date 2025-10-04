@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class AttackAction : BaseAction
 {
+
     [SerializeField] private int attackDamage;
     private enum State
     {
@@ -13,6 +14,10 @@ public class AttackAction : BaseAction
     private State state;
     private float stateTimer;
     private bool canAttack;
+
+    // Event for the animator
+    public event EventHandler OnAttackStarted;
+
     public override string GetActionName()
     {
         return "ATTACK";
@@ -77,16 +82,23 @@ public class AttackAction : BaseAction
 
     private void Punch()
     {
-        if (TryGetComponent<Enemy>(out Enemy enemy))
+        if (FindFirstObjectByType<Enemy>()!=null)
         {
+            Enemy enemy = FindFirstObjectByType<Enemy>();
+            Debug.Log("Punching an enemy");
             HealthSystem enemyHealthSystem = enemy.GetHealthSystem();
             enemyHealthSystem.TakeDamage(attackDamage);
+            OnAttackStarted?.Invoke(this, EventArgs.Empty);
         }
     }
 
-    public override void TakeAction(Action onCompletedAction)
+    public override void TakeAction(Action onCompleteAction)
     {
+        state = State.Charge;
+        float chargeStateTimer = 1f;
+        stateTimer = chargeStateTimer;
+
         canAttack = true;
-        ActionStart(onActionCompleted);
+        ActionStart(onCompleteAction);
     }
 }
