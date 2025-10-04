@@ -1,9 +1,12 @@
 using UnityEngine;
-
+using System;
 public class PlayerActionManager : MonoBehaviour
 {
     public static PlayerActionManager Instance { private set; get; }
 
+    // Event to call the UI script to update the action points
+    public event EventHandler OnActionStarted;
+    public event EventHandler<bool> OnBusyChanged;
     private BaseAction selectedAction;
 
     private Player player;
@@ -32,16 +35,19 @@ public class PlayerActionManager : MonoBehaviour
         {
             return;
         }
+        HandleSelectedAction();
     }
 
     private void SetBusy()
     {
         isBusy = true;
+        OnBusyChanged?.Invoke(this, isBusy);
     }
 
     private void ClearBusy()
     {
         isBusy = false;
+        OnBusyChanged?.Invoke(this, isBusy);
     }
 
     public void SetSelectedAction(BaseAction baseAction)
@@ -60,7 +66,11 @@ public class PlayerActionManager : MonoBehaviour
         {
             return;
         }
-
-
+        SetBusy();
+        Debug.Log("Action Set");
+        selectedAction.TakeAction(ClearBusy);
+        Debug.Log("Take Action called");
+        OnActionStarted?.Invoke(this, EventArgs.Empty);
+        selectedAction = null;
     }
 }
