@@ -30,7 +30,6 @@ public abstract class BaseAction : MonoBehaviour
     protected void ActionComplete()
     {
         isActive = false;
-        Debug.Log("Base Action complete - " + onCompleteAction.ToString());
         onCompleteAction();
         OnAnyActionCompleted?.Invoke(this, EventArgs.Empty);
     }
