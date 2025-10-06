@@ -67,9 +67,7 @@ public class PlayerActionManager : MonoBehaviour
             return;
         }
         SetBusy();
-        Debug.Log("Action Set");
         selectedAction.TakeAction(ClearBusy);
-        Debug.Log("Take Action called");
         OnActionStarted?.Invoke(this, EventArgs.Empty);
         selectedAction = null;
     }

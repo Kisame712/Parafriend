@@ -41,6 +41,8 @@ public class AttackAction : BaseAction
         {
             case State.Charge:
                 // Add camera effects and particle effects later if necessary
+                // Add the transform change too, maybe in a coroutine
+
                 break;
             case State.Punch:
                 if (canAttack)
@@ -65,7 +67,7 @@ public class AttackAction : BaseAction
         {
             case State.Charge:
                 state = State.Punch;
-                float punchStateTimer = 0.1f;
+                float punchStateTimer = 0.4f;
                 stateTimer = punchStateTimer;
                 break;
             case State.Punch:
@@ -85,7 +87,6 @@ public class AttackAction : BaseAction
         if (FindFirstObjectByType<Enemy>()!=null)
         {
             Enemy enemy = FindFirstObjectByType<Enemy>();
-            Debug.Log("Punching an enemy");
             HealthSystem enemyHealthSystem = enemy.GetHealthSystem();
             enemyHealthSystem.TakeDamage(attackDamage);
             OnAttackStarted?.Invoke(this, EventArgs.Empty);
