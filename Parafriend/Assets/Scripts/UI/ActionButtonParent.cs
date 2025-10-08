@@ -1,8 +1,9 @@
 using UnityEngine;
-
+using TMPro;
 public class ActionButtonParent : MonoBehaviour
 {
     [SerializeField] private Transform actionButtonPrefab;
+    [SerializeField] private TMP_Text actionPointsDisplayText;
 
     private Player player;
     private BaseAction[] baseActions;

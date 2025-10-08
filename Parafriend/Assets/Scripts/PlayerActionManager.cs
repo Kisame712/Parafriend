@@ -60,6 +60,16 @@ public class PlayerActionManager : MonoBehaviour
         return selectedAction;
     }
 
+    private bool CanTakeAction()
+    {
+        if(player.GetActionPoints() > 0)
+        {
+            return true;
+        }
+        return false;
+    }
+
+
     private void HandleSelectedAction()
     {
         if (selectedAction == null)
@@ -70,5 +80,10 @@ public class PlayerActionManager : MonoBehaviour
         selectedAction.TakeAction(ClearBusy);
         OnActionStarted?.Invoke(this, EventArgs.Empty);
         selectedAction = null;
+    }
+
+    public Player GetPlayer()
+    {
+        return player;
     }
 }
