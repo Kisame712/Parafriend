@@ -3,18 +3,19 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     [SerializeField] private int actionPointsPerTurn = 4;
-
+    private int actionPoints;
     private HealthSystem healthSystem;
     private BaseAction[] baseActionArray;
     private void Awake()
     {
         healthSystem = GetComponent<HealthSystem>();
         baseActionArray = GetComponents<BaseAction>();
+        ResetActionPoints();
     }
 
-    public int GetActionPointsPerTurn()
+    public int GetActionPoints()
     {
-        return actionPointsPerTurn;
+        return actionPoints;
     }
 
     public HealthSystem GetHealthSystem()
@@ -27,4 +28,23 @@ public class Player : MonoBehaviour
         return baseActionArray;
     }
 
+
+    public void ReduceActionPoints(int actionPointsToReduce)
+    {
+        this.actionPoints -= actionPointsToReduce;
+        if(actionPoints <= 0)
+        {
+            actionPoints = 0;
+        }
+    }
+
+    private void OnTurnOver_ReplenishActionPoints()
+    {
+        ResetActionPoints();
+    }
+
+    private void ResetActionPoints()
+    {
+        actionPoints = actionPointsPerTurn;
+    }
 }
