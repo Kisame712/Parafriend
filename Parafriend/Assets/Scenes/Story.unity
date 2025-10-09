@@ -384,6 +384,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4430522438959339912, guid: fd51f3c8a0557aa46841ced485009a57, type: 3}
+      propertyPath: m_Resource
+      value: 
+      objectReference: {fileID: 8300000, guid: 92c747e7d64c04944a2e91254f3b9ca9, type: 3}
     - target: {fileID: 8156455358952855833, guid: fd51f3c8a0557aa46841ced485009a57, type: 3}
       propertyPath: m_Name
       value: AudioManager
@@ -1196,7 +1200,7 @@ MonoBehaviour:
   clickSound: {fileID: 8300000, guid: f4b41e0789003e84c8fbc6a735b47660, type: 3}
   sentences:
   - Halloween is right around the corner. It is a big deal for a young teen in a
-    small town like Mark.
+    small town like Mike.
   - He decided to go all out and get a cool costume. The usual shop wasn't open so
     he decided to go down the forest road.
   - A shady and eerie shop, perfect!
@@ -1204,7 +1208,7 @@ MonoBehaviour:
   - '"The costume you got gives you great strength, but builds up poison in your
     blood!"'
   - '"Beat my minions and earn the antidote"'
-  - A parasyte laches onto Mike. Strangely, the effects of poison reduced.
+  - A parasite laches onto Mike. Strangely, the effects of poison reduced.
   - '"It is your ally of sorts. It feeds on your blood but increases your chance
     of survival, unless you run out of blood of course."'
   - '"Meet me at the top floor if you can, the costume shall be yours as well as
