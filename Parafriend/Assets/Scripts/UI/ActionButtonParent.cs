@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using System;
 public class ActionButtonParent : MonoBehaviour
 {
     [SerializeField] private Transform actionButtonPrefab;
@@ -12,7 +13,10 @@ public class ActionButtonParent : MonoBehaviour
     {
         player = FindFirstObjectByType<Player>();
         baseActions = player.GetBaseActions();
+        PlayerActionManager.Instance.OnActionStarted += PlayerActionManager_OnActionStarted;
+
         CreateActionButtons();
+        UpdateActionPoints();
     }
 
     private void CreateActionButtons()
@@ -25,6 +29,17 @@ public class ActionButtonParent : MonoBehaviour
             actionButtonComponent.SetActionName(baseAction);
 
         }
+    }
+
+    private void PlayerActionManager_OnActionStarted(object sender, int actionPointsToReduce)
+    {
+        player.ReduceActionPoints(actionPointsToReduce);
+        UpdateActionPoints();
+    }
+
+    private void UpdateActionPoints()
+    {
+        actionPointsDisplayText.text = $"Action Points : {player.GetActionPoints().ToString()}";
     }
 
 }
