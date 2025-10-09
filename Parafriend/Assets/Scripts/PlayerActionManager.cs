@@ -5,7 +5,7 @@ public class PlayerActionManager : MonoBehaviour
     public static PlayerActionManager Instance { private set; get; }
 
     // Event to call the UI script to update the action points
-    public event EventHandler OnActionStarted;
+    public event EventHandler<int> OnActionStarted;
     public event EventHandler<bool> OnBusyChanged;
     private BaseAction selectedAction;
 
@@ -60,16 +60,6 @@ public class PlayerActionManager : MonoBehaviour
         return selectedAction;
     }
 
-    private bool CanTakeAction()
-    {
-        if(player.GetActionPoints() > 0)
-        {
-            return true;
-        }
-        return false;
-    }
-
-
     private void HandleSelectedAction()
     {
         if (selectedAction == null)
@@ -77,8 +67,12 @@ public class PlayerActionManager : MonoBehaviour
             return;
         }
         SetBusy();
-        selectedAction.TakeAction(ClearBusy);
-        OnActionStarted?.Invoke(this, EventArgs.Empty);
+        int actionPointsRequired = selectedAction.GetActionPointsRequired();
+        if(player.GetActionPoints() >= actionPointsRequired)
+        {
+            selectedAction.TakeAction(ClearBusy);
+            OnActionStarted?.Invoke(this, selectedAction.GetActionPointsRequired());
+        }
         selectedAction = null;
     }
 
