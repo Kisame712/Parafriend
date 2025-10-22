@@ -1,12 +1,23 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System;
 public class HealthSystem : MonoBehaviour
 {
     [SerializeField] private int health;
     [SerializeField] private bool isFriend;
+
+    private int maxHealth;
+
+    public event EventHandler OnHealthSystemHeal;
+    public event EventHandler OnHealthSystemTakeDamage;
+    private void Awake()
+    {
+        maxHealth = health;
+    }
     public void TakeDamage(int damageAmount)
     {
         health -= damageAmount;
+        OnHealthSystemTakeDamage?.Invoke(this, EventArgs.Empty);
         if(health <=0)
         {
             Die();
@@ -28,5 +39,11 @@ public class HealthSystem : MonoBehaviour
     public void Healing(int healAmount)
     {
         health += healAmount;
+        OnHealthSystemHeal?.Invoke(this, EventArgs.Empty);
+    }
+
+    public float GetHealthNormalized()
+    {
+        return (float)health / maxHealth;
     }
 }
