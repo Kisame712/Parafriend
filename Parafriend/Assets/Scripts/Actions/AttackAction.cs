@@ -40,8 +40,6 @@ public class AttackAction : BaseAction
         switch (state)
         {
             case State.Charge:
-                // Add camera effects and particle effects later if necessary
-                // Add the transform change too, maybe in a coroutine
 
                 break;
             case State.Punch:

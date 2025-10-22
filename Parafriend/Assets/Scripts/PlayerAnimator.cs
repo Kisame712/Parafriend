@@ -17,10 +17,22 @@ public class PlayerAnimator : MonoBehaviour
         {
             attackAction.OnAttackStarted += AttackAction_OnAttackStarted;
         }
+
+        if(player.TryGetComponent<HealAction>(out HealAction healAction))
+        {
+            healAction.OnHealStarted += HealAction_OnHealStarted;
+        }
+
     }
 
     private void AttackAction_OnAttackStarted(object sender, EventArgs e)
     {
         animator.SetTrigger("attack");
     }
+
+    private void HealAction_OnHealStarted(object sender, EventArgs e)
+    {
+        animator.SetTrigger("heal");
+    }
+
 }
