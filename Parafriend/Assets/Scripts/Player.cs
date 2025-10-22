@@ -5,11 +5,13 @@ public class Player : MonoBehaviour
     [SerializeField] private int actionPointsPerTurn = 4;
     private int actionPoints;
     private HealthSystem healthSystem;
+    private PoisonSystem poisonSystem;
     private BaseAction[] baseActionArray;
     private void Awake()
     {
         healthSystem = GetComponent<HealthSystem>();
         baseActionArray = GetComponents<BaseAction>();
+        poisonSystem = GetComponent<PoisonSystem>();
         ResetActionPoints();
     }
 
@@ -21,6 +23,11 @@ public class Player : MonoBehaviour
     public HealthSystem GetHealthSystem()
     {
         return healthSystem;
+    }
+
+    public PoisonSystem GetPoisonSystem()
+    {
+        return poisonSystem;
     }
 
     public BaseAction[] GetBaseActions()
