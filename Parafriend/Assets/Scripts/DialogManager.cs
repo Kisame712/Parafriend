@@ -1,6 +1,7 @@
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 #if UNITY_EDITOR
 using UnityEditor;
@@ -9,17 +10,21 @@ using UnityEditor;
 
 public class DialogManager : MonoBehaviour
 {
-    [SerializeField] float typeSpeed;
+    [SerializeField] private float typeSpeed;
+    [SerializeField] private Image storyPanel;
     public AudioClip clickSound;
     public string[] sentences;
+    public Sprite[] storySprites;
     public TMP_Text textArea;
     public GameObject continueButton;
     public GameObject startGameButton;
     private int index;
-
+    private int spriteIndex;
 
     void Start()
     {
+        index = 0;
+        spriteIndex = 0;
         StartCoroutine(Type());
     }
 
@@ -48,6 +53,21 @@ public class DialogManager : MonoBehaviour
             continueButton.SetActive(false);
         }
 
+        if(index != 5 && index!=8)
+        {
+            ManageStoryPanels();
+        }
+
+    }
+
+    private void ManageStoryPanels()
+    {
+        if(spriteIndex >= storySprites.Length)
+        {
+            return;
+        }
+        spriteIndex++;
+        storyPanel.sprite = storySprites[spriteIndex];
     }
 
     public void LoadGameScene()

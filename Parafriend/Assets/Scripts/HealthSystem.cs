@@ -25,4 +25,8 @@ public class HealthSystem : MonoBehaviour
         }
     }
 
+    public void Healing(int healAmount)
+    {
+        health += healAmount;
+    }
 }
