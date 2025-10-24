@@ -41,6 +41,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Parasite
+    uniqueID: 3894569419
+    locked: 0
   - name: Player
     uniqueID: 539566645
     locked: 0
