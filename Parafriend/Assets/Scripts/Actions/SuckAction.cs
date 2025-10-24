@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 public class SuckAction : BaseAction
@@ -20,6 +21,12 @@ public class SuckAction : BaseAction
     {
         PoisonSystem poisonSystem = player.GetPoisonSystem();
         poisonSystem.ResetPoisonLevel();
+        StartCoroutine(AddSuckDelay());
+    }
+
+    IEnumerator AddSuckDelay()
+    {
+        yield return new WaitForSeconds(1f);
         ActionComplete();
     }
 }
