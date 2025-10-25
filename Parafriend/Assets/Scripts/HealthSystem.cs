@@ -32,7 +32,7 @@ public class HealthSystem : MonoBehaviour
         }
         else
         {
-            Debug.Log("Enemy is dead");
+            Destroy(gameObject);
         }
     }
 

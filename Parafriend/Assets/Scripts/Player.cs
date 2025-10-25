@@ -15,6 +15,11 @@ public class Player : MonoBehaviour
         ResetActionPoints();
     }
 
+    private void Start()
+    {
+        TurnSystem.Instance.OnTurnOver += OnTurnOver_ReplenishActionPoints;
+    }
+
     public int GetActionPoints()
     {
         return actionPoints;
@@ -45,8 +50,12 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void OnTurnOver_ReplenishActionPoints()
+    private void OnTurnOver_ReplenishActionPoints(object sender, bool isPlayerTurn)
     {
+        if (isPlayerTurn)
+        {
+            return;
+        }
         ResetActionPoints();
     }
 

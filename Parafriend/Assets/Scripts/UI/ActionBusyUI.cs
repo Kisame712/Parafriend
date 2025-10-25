@@ -6,6 +6,7 @@ public class ActionBusyUI : MonoBehaviour
     private void Start()
     {
         PlayerActionManager.Instance.OnBusyChanged += PlayerActionManager_OnBusyChanged;
+        TurnSystem.Instance.OnTurnOver += TurnSystem_OnTurnOver;
     }
 
     private void Show()
@@ -29,6 +30,20 @@ public class ActionBusyUI : MonoBehaviour
         {
             Show();
         }
+    }
+
+    private void TurnSystem_OnTurnOver(object sender, bool isPlayerTurn)
+    {
+        if (!isPlayerTurn)
+        {
+            Hide();
+        }
+
+        else
+        {
+            Show();
+        }
+
     }
 
 }
