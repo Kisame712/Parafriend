@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System;
+using System.Collections;
 public class HealthSystem : MonoBehaviour
 {
     [SerializeField] private int health;
@@ -33,6 +34,7 @@ public class HealthSystem : MonoBehaviour
         else
         {
             Destroy(gameObject);
+            StartCoroutine(DelayBeforeSceneChange());
         }
     }
 
@@ -45,5 +47,11 @@ public class HealthSystem : MonoBehaviour
     public float GetHealthNormalized()
     {
         return (float)health / maxHealth;
+    }
+
+    private IEnumerator DelayBeforeSceneChange()
+    {
+        yield return new WaitForSeconds(2f);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }

@@ -1,6 +1,6 @@
 using System;
 using UnityEngine;
-
+using System.Collections;
 public class HealAction : BaseAction
 {
     [SerializeField] private int healAmount;
@@ -28,7 +28,12 @@ public class HealAction : BaseAction
         // Add health taking sound effects and some UI display of health increase
         HealthSystem playerHealth = player.GetHealthSystem();
         playerHealth.Healing(healAmount);
-        ActionComplete();
+        StartCoroutine(AddHealDelay());
     }
 
+    IEnumerator AddHealDelay()
+    {
+        yield return new WaitForSeconds(1f);
+        ActionComplete();
+    }
 }
