@@ -14,7 +14,7 @@ public class ActionButtonParent : MonoBehaviour
         player = FindFirstObjectByType<Player>();
         baseActions = player.GetBaseActions();
         PlayerActionManager.Instance.OnActionStarted += PlayerActionManager_OnActionStarted;
-
+        TurnSystem.Instance.OnTurnOver += TurnSystem_OnTurnOver;
         CreateActionButtons();
         UpdateActionPoints();
     }
@@ -34,6 +34,15 @@ public class ActionButtonParent : MonoBehaviour
     private void PlayerActionManager_OnActionStarted(object sender, int actionPointsToReduce)
     {
         player.ReduceActionPoints(actionPointsToReduce);
+        UpdateActionPoints();
+    }
+
+    private void TurnSystem_OnTurnOver(object sender, bool isPlayerTurn)
+    {
+        if (isPlayerTurn)
+        {
+            return;
+        }
         UpdateActionPoints();
     }
 

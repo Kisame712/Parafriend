@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SuckAction : BaseAction
 {
+    [SerializeField] private int suckDamage;
     public event EventHandler OnSuckStarted;
     public override string GetActionName()
     {
@@ -19,14 +20,16 @@ public class SuckAction : BaseAction
 
     private void Suck()
     {
-        PoisonSystem poisonSystem = player.GetPoisonSystem();
-        poisonSystem.ResetPoisonLevel();
         StartCoroutine(AddSuckDelay());
     }
 
     IEnumerator AddSuckDelay()
     {
         yield return new WaitForSeconds(1f);
+        PoisonSystem poisonSystem = player.GetPoisonSystem();
+        poisonSystem.ResetPoisonLevel();
+        HealthSystem healthSystem = player.GetHealthSystem();
+        healthSystem.TakeDamage(suckDamage);
         ActionComplete();
     }
 }

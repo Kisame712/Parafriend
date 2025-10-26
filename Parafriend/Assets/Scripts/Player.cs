@@ -7,6 +7,7 @@ public class Player : MonoBehaviour
     private HealthSystem healthSystem;
     private PoisonSystem poisonSystem;
     private BaseAction[] baseActionArray;
+
     private void Awake()
     {
         healthSystem = GetComponent<HealthSystem>();
