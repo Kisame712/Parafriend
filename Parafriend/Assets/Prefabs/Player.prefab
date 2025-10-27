@@ -1157,8 +1157,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2069e58f060e2c479de161afb581f75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 1898033001496043063}
   maxPoisonTolerance: 20
   maxPoisonPerTurn: 5
+  damageFromPoison: 0
 --- !u!95 &1002932263554477779
 Animator:
   serializedVersion: 7
