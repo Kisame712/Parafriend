@@ -6,7 +6,10 @@ public class HealthSystem : MonoBehaviour
 {
     [SerializeField] private int health;
     [SerializeField] private bool isFriend;
-
+    [SerializeField] private GameObject visuals;
+    [SerializeField] private GameObject healthBar;
+    [SerializeField] private AudioClip enemyDeadSound;
+    [SerializeField] private GameObject bloodParticles;
     private int maxHealth;
 
     public event EventHandler OnHealthSystemHeal;
@@ -19,6 +22,7 @@ public class HealthSystem : MonoBehaviour
     {
         health -= damageAmount;
         OnHealthSystemTakeDamage?.Invoke(this, EventArgs.Empty);
+        Instantiate(bloodParticles, transform.position, Quaternion.identity);
         if(health <=0)
         {
             Die();
@@ -33,7 +37,9 @@ public class HealthSystem : MonoBehaviour
         }
         else
         {
-            Destroy(gameObject);
+            EffectSoundManager.Instance.PlaySoundEffect(enemyDeadSound);
+            visuals.SetActive(false);
+            healthBar.SetActive(false);
             StartCoroutine(DelayBeforeSceneChange());
         }
     }
@@ -51,7 +57,7 @@ public class HealthSystem : MonoBehaviour
 
     private IEnumerator DelayBeforeSceneChange()
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1f);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }

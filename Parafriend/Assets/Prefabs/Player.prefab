@@ -1094,6 +1094,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 50
   isFriend: 1
+  visuals: {fileID: 4623725751090047558}
+  healthBar: {fileID: 2163788126904766701}
+  enemyDeadSound: {fileID: 8300000, guid: 167a94c47c89c31498215f8adff153c1, type: 3}
+  bloodParticles: {fileID: 7482399914094037972, guid: fb0f64adf51224d46a88e70d38bd410d, type: 3}
 --- !u!114 &3395556827437037893
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1107,6 +1111,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healAmount: 5
+  healSound: {fileID: 8300000, guid: a9e189ba5c72d6548b09f3e04e932b7c, type: 3}
 --- !u!114 &4496956521973154052
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1133,6 +1138,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackDamage: 10
+  playerAttackSound: {fileID: 8300000, guid: acc8cd485a9e87a4093e266f9b7bdb37, type: 3}
 --- !u!114 &5366077099565493414
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1160,7 +1166,7 @@ MonoBehaviour:
   player: {fileID: 1898033001496043063}
   maxPoisonTolerance: 20
   maxPoisonPerTurn: 5
-  damageFromPoison: 0
+  damageFromPoison: 5
 --- !u!95 &1002932263554477779
 Animator:
   serializedVersion: 7

@@ -4,7 +4,7 @@ using System.Collections;
 public class HealAction : BaseAction
 {
     [SerializeField] private int healAmount;
-
+    [SerializeField] private AudioClip healSound;
     public event EventHandler OnHealStarted;
     public override string GetActionName()
     {
@@ -28,6 +28,7 @@ public class HealAction : BaseAction
         // Add health taking sound effects and some UI display of health increase
         HealthSystem playerHealth = player.GetHealthSystem();
         playerHealth.Healing(healAmount);
+        EffectSoundManager.Instance.PlaySoundEffect(healSound);
         StartCoroutine(AddHealDelay());
     }
 

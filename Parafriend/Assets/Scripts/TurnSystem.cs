@@ -17,6 +17,7 @@ public class TurnSystem : MonoBehaviour
         }
         Instance = this;
         isPlayerTurn = true;
+        OnTurnOver?.Invoke(this, isPlayerTurn);
     }
 
     public void TurnChanged()

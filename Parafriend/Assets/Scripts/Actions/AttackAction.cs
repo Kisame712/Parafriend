@@ -5,6 +5,7 @@ public class AttackAction : BaseAction
 {
 
     [SerializeField] private int attackDamage;
+    [SerializeField] private AudioClip playerAttackSound;
     private enum State
     {
         Charge,
@@ -86,6 +87,7 @@ public class AttackAction : BaseAction
         {
             Enemy enemy = FindFirstObjectByType<Enemy>();
             HealthSystem enemyHealthSystem = enemy.GetHealthSystem();
+            EffectSoundManager.Instance.PlaySoundEffect(playerAttackSound);
             enemyHealthSystem.TakeDamage(attackDamage);
         }
     }

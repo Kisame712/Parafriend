@@ -15,6 +15,7 @@ public class ActionButtonParent : MonoBehaviour
         baseActions = player.GetBaseActions();
         PlayerActionManager.Instance.OnActionStarted += PlayerActionManager_OnActionStarted;
         TurnSystem.Instance.OnTurnOver += TurnSystem_OnTurnOver;
+        player.OnResetActionPoints += Player_OnResetActionPoints;
         CreateActionButtons();
         UpdateActionPoints();
     }
@@ -43,6 +44,11 @@ public class ActionButtonParent : MonoBehaviour
         {
             return;
         }
+        UpdateActionPoints();
+    }
+
+    private void Player_OnResetActionPoints(object sender, EventArgs e)
+    {
         UpdateActionPoints();
     }
 
