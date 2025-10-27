@@ -1,5 +1,5 @@
 using UnityEngine;
-
+using System;
 public class Player : MonoBehaviour
 {
     [SerializeField] private int actionPointsPerTurn = 4;
@@ -7,6 +7,8 @@ public class Player : MonoBehaviour
     private HealthSystem healthSystem;
     private PoisonSystem poisonSystem;
     private BaseAction[] baseActionArray;
+
+    public event EventHandler OnResetActionPoints;
 
     private void Awake()
     {
@@ -63,5 +65,6 @@ public class Player : MonoBehaviour
     private void ResetActionPoints()
     {
         actionPoints = actionPointsPerTurn;
+        OnResetActionPoints?.Invoke(this, EventArgs.Empty);
     }
 }

@@ -43,8 +43,7 @@ public class PoisonSystem : MonoBehaviour
         {
             return;
         }
-        //int randomPoisonAttack = UnityEngine.Random.Range(0, maxPoisonPerTurn);
-        int randomPoisonAttack = 10;
+        int randomPoisonAttack = UnityEngine.Random.Range(0, maxPoisonPerTurn);
         PoisonAttack(randomPoisonAttack);
     }
 

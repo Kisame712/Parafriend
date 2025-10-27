@@ -3,6 +3,7 @@ using System;
 
 public class Parasite : MonoBehaviour
 {
+    [SerializeField] private AudioClip suckSound;
     private Animator parasiteAnimator;
 
     private void Awake()
@@ -22,6 +23,7 @@ public class Parasite : MonoBehaviour
 
     private void OnSuckStarted_PlaySuckAnimation(object sender, EventArgs e)
     {
+        EffectSoundManager.Instance.PlaySoundEffect(suckSound);
         parasiteAnimator.SetTrigger("suck");
     }
 

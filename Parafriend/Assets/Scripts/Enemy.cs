@@ -5,6 +5,7 @@ public class Enemy : MonoBehaviour
 {
     [SerializeField] private Transform stonePrefab;
     [SerializeField] private Transform spawnPoint;
+    [SerializeField] private AudioClip enemyAttackSound;
     private HealthSystem healthSystem;
     private Animator enemyAnim;
 
@@ -40,6 +41,7 @@ public class Enemy : MonoBehaviour
 
     public void AttackPlayer()
     {
+        EffectSoundManager.Instance.PlaySoundEffect(enemyAttackSound);
         Instantiate(stonePrefab, spawnPoint.position, Quaternion.identity);
     }
 }

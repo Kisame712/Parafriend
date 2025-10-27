@@ -84,6 +84,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stonePrefab: {fileID: 747760618516465726, guid: 054dbe78b5f99594b9a231ff386e9be4, type: 3}
   spawnPoint: {fileID: 8553070806839995151}
+  enemyAttackSound: {fileID: 8300000, guid: 1c56a65fd058db046a83d9b7b4ab471f, type: 3}
 --- !u!114 &2693673993759944162
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -98,6 +99,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 20
   isFriend: 0
+  visuals: {fileID: 1100084321950334730}
+  healthBar: {fileID: 1805128089227182292}
+  enemyDeadSound: {fileID: 8300000, guid: 167a94c47c89c31498215f8adff153c1, type: 3}
+  bloodParticles: {fileID: 7482399914094037972, guid: fb0f64adf51224d46a88e70d38bd410d, type: 3}
 --- !u!95 &5730551518257656318
 Animator:
   serializedVersion: 7

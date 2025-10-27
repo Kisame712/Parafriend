@@ -693,6 +693,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f98ad99c276c874bbed8777690a8af6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  suckSound: {fileID: 8300000, guid: 2c3b6379a1884f94da567a1bdc46006d, type: 3}
 --- !u!95 &4827097651428877722
 Animator:
   serializedVersion: 7
