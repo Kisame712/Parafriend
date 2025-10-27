@@ -87,7 +87,6 @@ public class AttackAction : BaseAction
             Enemy enemy = FindFirstObjectByType<Enemy>();
             HealthSystem enemyHealthSystem = enemy.GetHealthSystem();
             enemyHealthSystem.TakeDamage(attackDamage);
-            OnAttackStarted?.Invoke(this, EventArgs.Empty);
         }
     }
 
@@ -98,6 +97,7 @@ public class AttackAction : BaseAction
         stateTimer = chargeStateTimer;
 
         canAttack = true;
+        OnAttackStarted?.Invoke(this, EventArgs.Empty);
         ActionStart(onCompleteAction);
     }
 }
